@@ -13,4 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require three.min
+//= require Detector
+//= require GeometryUtils
+//= require stats.min
+//= require DeviceOrientationControls
+//= require StereoEffect
+//= require OrbitControls
+//= require VRControls
+//= require VREffect
+//= require VRManager
+//= require cable

@@ -1,0 +1,8 @@
+<%= @num.to_s %>
+
+<script>
+    window.addEventListener("keydown", (e) => {
+        if ([16, 17, 18, 37, 38, 39, 40, 91, 92].indexOf(e.keyCode) >= 0)return false;
+        App.room.key_pressed({"keyCode" : e.keyCode, "shift" : e.shiftKey});
+    });
+</script>
