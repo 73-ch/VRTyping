@@ -22,6 +22,7 @@ var text = "three.js",
     fontWeight = "bold";
 
 window.onload = () => {
+    alert("test");
     loadFont().then(() => {
         main();
     });
@@ -39,7 +40,6 @@ let loadFont = () => {
 
 let main = () => {
     loadFont();
-    alert("test");
     let scene = new THREE.Scene();
     let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     // var controls = new THREE.OrbitControls(camera);

@@ -22,6 +22,7 @@ var text = "three.js",
     fontWeight = "bold";
 
 window.onload = () => {
+    alert("test");
     loadFont().then(() => {
         main();
     });
