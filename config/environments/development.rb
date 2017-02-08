@@ -53,4 +53,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.assets.precompile += ['*.js']
+  config.action_cable.disable_request_forgery_protection = true
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
 end

@@ -1,10 +1,3 @@
-window.onerror = (msg, url, line, col, error) => {
-    let element = document.createElement("p");
-    element.textContent = "msg";
-    element.style.color = "white";
-    console.log('read');
-    document.body.appendChild(element);
-};
 let typing;
 let textMesh1;
 
@@ -22,7 +15,6 @@ var text = "three.js",
     fontWeight = "bold";
 
 window.onload = () => {
-    alert("test");
     loadFont().then(() => {
         main();
     });

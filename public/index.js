@@ -32,7 +32,6 @@ let loadFont = () => {
 
 let main = () => {
     loadFont();
-    alert("test");
     let scene = new THREE.Scene();
     let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     // var controls = new THREE.OrbitControls(camera);
@@ -45,7 +44,7 @@ let main = () => {
 //     let controls = new THREE.VRControls(camera);
 
 // VR用エフェクトを生成（2分割の画面を構築する）
-    let effect = new THREE.VREffect(renderer);
+//     let effect = new THREE.VREffect(renderer);
     // effect.setSize(window.innerWidth, window.innerHeight);
 
 // VRマネージャの生成
