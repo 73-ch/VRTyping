@@ -45,10 +45,10 @@ let main = () => {
 
 // VR用エフェクトを生成（2分割の画面を構築する）
     let effect = new THREE.VREffect(renderer);
-    // effect.setSize(window.innerWidth, window.innerHeight);
+    effect.setSize(window.innerWidth, window.innerHeight);
 
 // VRマネージャの生成
-//     let manager = new WebVRManager(renderer, effect);
+    let manager = new WebVRManager(renderer, effect);
 
     group = new THREE.Group();
     scene.add(group);
@@ -74,9 +74,9 @@ let main = () => {
         for (let i = 0; i < group.children.length; i++) {
             group.children[i].position.z = 10 * Math.sin(count / 100 + i) - 5;
         }
-        // controls.update();
-        // manager.render(scene, camera, count);
-        renderer.render(scene, camera);
+        controls.update();
+        manager.render(scene, camera, count);
+        // renderer.render(scene, camera);
     }
 
     App.room = App.cable.subscriptions.create("RoomChannel", {
