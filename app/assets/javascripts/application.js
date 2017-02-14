@@ -23,4 +23,5 @@
 //= require VRControls
 //= require VREffect
 //= require VRManager
+//= require PhoneVR
 //= require cable
