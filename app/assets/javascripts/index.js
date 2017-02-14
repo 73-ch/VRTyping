@@ -33,15 +33,15 @@ let loadFont = () => {
 let main = () => {
     loadFont();
     let scene = new THREE.Scene();
-    let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight / 1.5, 0.1, 1000);
+    let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1.5, 1000);
     // var controls = new THREE.OrbitControls(camera);
     let renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight * 1.5);
+    // renderer.setSize(window.innerWidth, window.innerHeight * 1.5);
     document.body.appendChild(renderer.domElement);
 
 // VR用コントローラを生成
-//     let controls = new THREE.VRControls(camera);
+    let controls = new THREE.VRControls(camera);
 
 // VR用エフェクトを生成（2分割の画面を構築する）
     let effect = new THREE.VREffect(renderer);
@@ -61,6 +61,11 @@ let main = () => {
     var light = new THREE.DirectionalLight(0xffffff);
     light.position.set(0, 0, 5).normalize();
     scene.add(light);
+    
+    
+    var light1 = new THREE.DirectionalLight(0xffffff);
+    light1.position.set(0, 0, -5).normalize();
+    scene.add(light1);
 
     window.THREE = THREE;
     window.scene = scene;
@@ -70,12 +75,13 @@ let main = () => {
     function render() {
         count ++;
         requestAnimationFrame(render);
-        renderer.clear();
+        // renderer.clear();
         for (let i = 0; i < group.children.length; i++) {
             group.children[i].position.z = 10 * Math.sin(count / 100 + i) - 5;
         }
         controls.update();
-        manager.render(scene, camera, count);
+        // manager.render(scene, camera, count);
+        effect.render(scene, camera);
         // renderer.render(scene, camera);
     }
 
@@ -89,6 +95,10 @@ let main = () => {
     });
 
     render();
+    
+    document.body.addEventListener( 'touch', function(){
+        effect.setFullScreen( true );
+    })
 };
 
 
@@ -181,8 +191,11 @@ class Typing {
 
         let materialT = new THREE.MeshPhongMaterial({
             color: color,
-            shading: THREE.FlatShading
+            shading: THREE.FlatShading,
+            side: THREE.DoubleSide
         });
+        
+    
 
         if (true) {
             var triangleAreaHeuristics = 0.1 * ( height * size );
@@ -215,9 +228,9 @@ class Typing {
             this.group.add(textMesh1);
         } else if (type === "question") {
             this.scene.remove( this.q );
-            textMesh1.position.x = -3;
-            textMesh1.position.y = 0;
-            textMesh1.position.z = -5;
+            textMesh1.position.x = Math.random() * 10 - 5;
+            textMesh1.position.y = Math.random() * 10 - 5;
+            textMesh1.position.z = Math.random() * 10 - 5;
             this.q = textMesh1;
             this.scene.add(this.q);
         }
@@ -301,5 +314,3 @@ const char = {
     });
 
 }).call(this);
-
-
