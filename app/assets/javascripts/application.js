@@ -24,4 +24,5 @@
 //= require VREffect
 //= require VRManager
 //= require webvr-polyfill
+//= require webvr-manager
 //= require cable
